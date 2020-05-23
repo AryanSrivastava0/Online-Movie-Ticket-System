@@ -6,9 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
+/****************************
+ *          @author          Aryan Srivastava
+ *          Description      It is a entity class used to define variables and getting & setting the values  
+ *          Version          1.0
+ *          Created Date     11-MAY-2020
+ ****************************/
 @Entity
 @Table(name = "Users")
 public class User {
@@ -19,21 +26,53 @@ public class User {
 	private Integer userId;
 
 	@Column(unique = true, name = "userName")
-	@NotBlank
 	private String userName;
 
 	@Column(name = "password")
-	//@Min(value = 8)
 	private String password;
+	
+	@Column(name = "email")
+	private String email;
 
-	private Boolean IsAdmin;
+	@Column(name = "age")
+	private Integer age;
+	
+	@Column(name = "gender")
+	private String gender;
+	
+	@Column(name = "contactNumber")
+	private String contactNumber;
 
-	public Boolean getIsAdmin() {
-		return IsAdmin;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setIsAdmin(Boolean isAdmin) {
-		IsAdmin = isAdmin;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 
 	public Integer getUserId() {
@@ -65,13 +104,17 @@ public class User {
 		this.password = password;
 	}
 
-	public User(Integer userId, @NotBlank String userName, @Min(8) String password, Boolean isAdmin) {
+	public User(Integer userId, String userName, String password, String email, Integer age, String gender,
+			String contactNumber) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
-		IsAdmin = isAdmin;
+		this.email = email;
+		this.age = age;
+		this.gender = gender;
+		this.contactNumber = contactNumber;
 	}
-	
+
 	
 }
